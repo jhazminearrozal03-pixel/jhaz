@@ -1,0 +1,5 @@
+employeeId,date,hoursWorked,overtimeHours,lateMinutes
+EMP-001,2026-08-01,8,0,0
+EMP-001,2026-08-02,8,2,0
+EMP-002,2026-08-01,8,0,15
+EMP-002,2026-08-02,8,0,0
