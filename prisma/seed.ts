@@ -1,6 +1,32 @@
 import { PrismaClient } from "@prisma/client";
+import { randomBytes, scryptSync } from "crypto";
 
 const prisma = new PrismaClient();
+
+// Duplicated from lib/password.ts (which is guarded with `server-only` and can't be
+// imported from this standalone script) so seeded team members get a real scrypt hash.
+function hashPassword(password: string): string {
+  const salt = randomBytes(16).toString("hex");
+  const derivedKey = scryptSync(password, salt, 64);
+  return `${salt}:${derivedKey.toString("hex")}`;
+}
+
+const teamMembers = [
+  {
+    email: "juan.delacruz@example.com",
+    name: "Juan Dela Cruz",
+    password: "changeme123",
+    // Replace with the numeric user id from Monday.com (Admin > Users, or the users() API query)
+    // so tasks assigned to this person on your board link to them automatically.
+    mondayUserId: null as string | null,
+  },
+  {
+    email: "angela.reyes@example.com",
+    name: "Angela Reyes",
+    password: "changeme123",
+    mondayUserId: null as string | null,
+  },
+];
 
 const employees = [
   {
@@ -113,6 +139,21 @@ async function main() {
   }
 
   console.log(`Seeded ${employees.length} employees with attendance logs.`);
+
+  console.log("Seeding team members...");
+  for (const member of teamMembers) {
+    await prisma.teamMember.upsert({
+      where: { email: member.email },
+      update: {},
+      create: {
+        email: member.email,
+        name: member.name,
+        passwordHash: hashPassword(member.password),
+        mondayUserId: member.mondayUserId,
+      },
+    });
+  }
+  console.log(`Seeded ${teamMembers.length} team members.`);
 }
 
 main()

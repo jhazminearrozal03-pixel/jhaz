@@ -67,3 +67,68 @@ model PayrollRecord {
   @@unique([employeeId, payPeriodStart, payPeriodEnd])
   @@index([employeeId])
 }
+
+// --- Team Task Checklist (Monday.com sync) ---
+
+enum TaskStatus {
+  PENDING
+  DONE
+}
+
+model TeamMember {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  // Monday.com user id used to match "person" column assignments to this team member.
+  mondayUserId String?  @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  tasks    Task[]
+  sessions ChecklistSession[]
+}
+
+model Task {
+  id                   String     @id @default(cuid())
+  mondayItemId         String     @unique
+  mondayBoardId        String
+  mondayGroupId        String?
+  title                String
+  status               TaskStatus @default(PENDING)
+  // Column id the status was read from, so we push updates back to the same column.
+  statusColumnId       String?
+  // Raw Monday.com person id from the assignee column, kept even when unmatched to a TeamMember.
+  mondayAssigneeUserId String?
+  assigneeId           String?
+  lastMondaySyncAt     DateTime?
+  createdAt            DateTime   @default(now())
+  updatedAt            DateTime   @updatedAt
+
+  assignee TeamMember? @relation(fields: [assigneeId], references: [id], onDelete: SetNull)
+
+  @@index([assigneeId])
+}
+
+// Audit log of incoming Monday.com webhook deliveries, for debugging sync issues.
+model WebhookEvent {
+  id           String   @id @default(cuid())
+  eventType    String
+  mondayItemId String?
+  payload      String
+  status       String   @default("RECEIVED")
+  error        String?
+  createdAt    DateTime @default(now())
+}
+
+model ChecklistSession {
+  id           String   @id @default(cuid())
+  tokenHash    String   @unique
+  teamMemberId String
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+
+  teamMember TeamMember @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  @@index([teamMemberId])
+}

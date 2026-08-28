@@ -9,6 +9,7 @@ import {
   Calculator,
   FileText,
   Wallet,
+  ClipboardCheck,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -19,6 +20,7 @@ const navItems = [
   { href: "/attendance", label: "Attendance Upload", icon: UploadCloud },
   { href: "/payroll", label: "Payroll Processing", icon: Calculator },
   { href: "/payslips", label: "Payslips", icon: FileText },
+  { href: "/checklist", label: "My Tasks", icon: ClipboardCheck },
 ];
 
 export function Sidebar() {
