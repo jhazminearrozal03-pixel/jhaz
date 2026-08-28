@@ -8,6 +8,7 @@ import {
   UploadCloud,
   Calculator,
   FileText,
+  ClipboardCheck,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ const navItems = [
   { href: "/attendance", label: "Attendance", icon: UploadCloud },
   { href: "/payroll", label: "Payroll", icon: Calculator },
   { href: "/payslips", label: "Payslips", icon: FileText },
+  { href: "/checklist", label: "My Tasks", icon: ClipboardCheck },
 ];
 
 export function MobileNav() {
