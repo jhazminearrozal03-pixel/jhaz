@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Go Properties | Southern Maine Vacation Homes</title>
+
+  <meta
+    name="description"
+    content="Go Properties offers welcoming vacation homes in Wells, Maine for families, friends and groups. Explore Shamrock by the Sea and The Salt Box."
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --navy: #10283d;
+      --navy-2: #183852;
+      --cream: #f6f1e8;
+      --sand: #dfd2c0;
+      --sea: #8fb4bd;
+      --sea-light: #dbe9eb;
+      --white: #ffffff;
+      --text: #23313d;
+      --muted: #66717b;
+      --border: #d9d5cf;
+
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--sea);
+      margin-bottom: 1rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      color: var(--navy);
+      line-height: 1.1;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.6rem);
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+    }
+
+    h3 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0.9rem 1.55rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-2);
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .btn-light:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: var(--navy);
+      color: var(--navy);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* ================================
+       NAVIGATION
+    ================================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(16,40,61,0.08);
+    }
+
+    .navbar {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.75rem;
+      font-family: var(--sans);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a:not(.btn) {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .nav-links a:not(.btn):hover {
+      color: #587f89;
+    }
+
+    .menu-button {
+      display: none;
+      background: none;
+      border: 0;
+      color: var(--navy);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero {
+      min-height: calc(100vh - 82px);
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+
+      /* Replace with the actual Go Properties hero image */
+      background:
+        linear-gradient(
+          180deg,
+          rgba(9,30,47,0.12) 0%,
+          rgba(9,30,47,0.62) 100%
+        ),
+        url("images/hero-go-properties.jpg")
+        center center / cover no-repeat;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 7rem 0 6rem;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      max-width: 850px;
+    }
+
+    .hero p {
+      margin-top: 1.5rem;
+      max-width: 650px;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.15rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    /* ================================
+       INTRO
+    ================================= */
+
+    .intro {
+      background: var(--cream);
+      padding: 7rem 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .intro-copy {
+      max-width: 650px;
+    }
+
+    .intro-copy p + p {
+      margin-top: 1rem;
+    }
+
+    /* ================================
+       PROPERTIES
+    ================================= */
+
+    .properties {
+      padding: 7rem 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-heading p {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .property-card {
+      border: 1px solid var(--border);
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .property-image {
+      height: 460px;
+      overflow: hidden;
+    }
+
+    .property-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s ease;
+    }
+
+    .property-card:hover .property-image img {
+      transform: scale(1.025);
+    }
+
+    .property-content {
+      padding: 2.3rem;
+    }
+
+    .property-location {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--sea);
+      margin-bottom: 0.75rem;
+    }
+
+    .property-content h3 {
+      margin-bottom: 1rem;
+    }
+
+    .property-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .fact {
+      background: var(--cream);
+      color: var(--navy);
+      padding: 0.55rem 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* ================================
+       EXPERIENCE
+    ================================= */
+
+    .experience {
+      background: var(--navy);
+      color: var(--white);
+      padding: 7rem 0;
+    }
+
+    .experience h2 {
+      color: var(--white);
+      text-align: center;
+    }
+
+    .experience-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 1.2rem auto 4rem;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .experience-card {
+      padding: 2.2rem 1.6rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      min-height: 250px;
+    }
+
+    .experience-number {
+      display: block;
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--sea);
+      margin-bottom: 2rem;
+    }
+
+    .experience-card h3 {
+      color: var(--white);
+      font-size: 1.45rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .experience-card p {
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ================================
+       ABOUT
+    ================================= */
+
+    .about {
+      padding: 7rem 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 5rem;
+    }
+
+    .about-image {
+      min-height: 650px;
+    }
+
+    .about-image img {
+      height: 650px;
+      object-fit: cover;
+    }
+
+    .about-copy p {
+      margin-top: 1.25rem;
+    }
+
+    /* ================================
+       WELLS
+    ================================= */
+
+    .wells {
+      background: var(--cream);
+      padding: 7rem 0;
+    }
+
+    .wells-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .wells-image img {
+      height: 560px;
+      object-fit: cover;
+    }
+
+    .wells-copy p {
+      margin: 1.3rem 0 2rem;
+    }
+
+    .local-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .local-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ================================
+       DIRECT BOOKING
+    ================================= */
+
+    .direct-booking {
+      padding: 7rem 0;
+      background: var(--sea-light);
+    }
+
+    .booking-box {
+      max-width: 900px;
+      text-align: center;
+      margin: auto;
+    }
+
+    .booking-box p {
+      margin: 1.2rem auto 2rem;
+      max-width: 700px;
+    }
+
+    /* ================================
+       FAQ
+    ================================= */
+
+    .faq {
+      padding: 7rem 0;
+    }
+
+    .faq-wrap {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .faq-wrap h2 {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    details {
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+
+    details p {
+      margin-top: 1rem;
+      max-width: 740px;
+    }
+
+    /* ================================
+       FINAL CTA
+    ================================= */
+
+    .final-cta {
+      position: relative;
+      padding: 8rem 0;
+
+      background:
+        linear-gradient(
+          rgba(9,30,47,0.68),
+          rgba(9,30,47,0.68)
+        ),
+        url("images/coastal-maine.jpg")
+        center / cover no-repeat;
+
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      color: var(--white);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .final-cta p {
+      color: rgba(255,255,255,0.8);
+      margin: 1.2rem auto 2rem;
+      max-width: 650px;
+    }
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+      background: #0b1e2d;
+      color: var(--white);
+      padding: 5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    footer h3 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.68);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    /* ================================
+       RESPONSIVE
+    ================================= */
+
+    @media (max-width: 900px) {
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        right: 0;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        background: var(--white);
+        padding: 2rem;
+
+        border-bottom: 1px solid var(--border);
+
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+      }
+
+      .intro-grid,
+      .property-grid,
+      .about-grid,
+      .wells-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .intro-grid {
+        gap: 2rem;
+      }
+
+      .about-image img,
+      .wells-image img {
+        height: 480px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .hero-content {
+        padding: 6rem 0 4rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .property-image {
+        height: 340px;
+      }
+
+      .property-content {
+        padding: 1.5rem;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image img,
+      .wells-image img {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===============================
+       HEADER
+  ================================== -->
+
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a href="#home" class="brand">
+        <span class="brand-mark">GO</span>
+        <span>Go Properties</span>
+      </a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation"
+      >
+        ☰
+      </button>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#properties">Our Properties</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#wells">Explore Wells</a></li>
+          <li><a href="#faq">FAQ</a></li>
+
+          <li>
+            <a
+              href="https://goproperties.directstays.com"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener"
+            >
+              Book Direct
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- ===============================
+         HERO
+    ================================== -->
+
+    <section class="hero" id="home">
+
+      <div class="container hero-content">
+
+        <div class="eyebrow" style="color:#dbe9eb;">
+          Wells, Maine
+        </div>
+
+        <h1>
+          Spacious Stays.<br>
+          Coastal Memories.
+        </h1>
+
+        <p>
+          Welcoming Southern Maine vacation homes made for
+          families, friends and groups looking to relax,
+          reconnect and make memories by the coast.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            href="https://goproperties.directstays.com"
+            class="btn btn-light"
+            target="_blank"
+            rel="noopener"
+          >
+            Check Availability
+          </a>
+
+          <a
+            href="#properties"
+            class="btn btn-primary"
+          >
+            View Our Properties
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         INTRO
+    ================================== -->
+
+    <section class="intro">
+
+      <div class="container intro-grid">
+
+        <div>
+          <div class="eyebrow">Go Properties LLC</div>
+
+          <h2>
+            Your Southern Maine getaway starts here.
+          </h2>
+        </div>
+
+        <div class="intro-copy">
+
+          <p>
+            Go Properties LLC is a small, family-owned business
+            with roots in New England. Maine has always been a
+            special place for our family, filled with vacations,
+            coastal adventures and memories together.
+          </p>
+
+          <p>
+            Our love of travel inspired us to open our homes to
+            guests and give other families and groups the chance
+            to create those same kinds of memories.
+          </p>
+
+          <p>
+            Through Shamrock by the Sea and The Salt Box, our goal
+            is simple: comfortable stays, genuine hospitality and
+            more time enjoying everything Southern Maine has to offer.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         PROPERTIES
+    ================================== -->
+
+    <section class="properties" id="properties">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="eyebrow">Stay With Us</div>
+
+          <h2>
+            Our Properties
+          </h2>
+
+          <p>
+            Two Southern Maine vacation homes, each offering
+            its own way to experience Wells and the surrounding coast.
+          </p>
+
+        </div>
+
+
+        <div class="property-grid">
+
+          <!-- SHAMROCK -->
+
+          <article class="property-card">
+
+            <div class="property-image">
+              <img
+                src="images/shamrock-by-the-sea.jpg"
+                alt="Shamrock by the Sea vacation home in Wells Maine"
+              >
+            </div>
+
+            <div class="property-content">
+
+              <div class="property-location">
+                Wells, Maine
+              </div>
+
+              <h3>
+                Shamrock by the Sea
+              </h3>
+
+              <p>
+                A welcoming Southern Maine getaway designed for
+                families and groups who want to enjoy beach days,
+                time together and the charm of the Maine coast.
+              </p>
+
+              <!--
+                Add only verified Shamrock facts here.
+              -->
+
+              <div class="facts">
+                <span class="fact">Southern Maine</span>
+                <span class="fact">Group Getaway</span>
+                <span class="fact">Wells, Maine</span>
+              </div>
+
+              <a
+                href="https://goproperties.directstays.com"
+                class="btn btn-outline"
+                target="_blank"
+                rel="noopener"
+              >
+                View Property
+              </a>
+
+            </div>
+          </article>
+
+
+          <!-- SALT BOX -->
+
+          <article class="property-card">
+
+            <div class="property-image">
+              <img
+                src="images/the-salt-box.jpg"
+                alt="The Salt Box vacation cottage in Wells Maine"
+              >
+            </div>
+
+            <div class="property-content">
+
+              <div class="property-location">
+                Wells, Maine
+              </div>
+
+              <h3>
+                The Salt Box
+              </h3>
+
+              <p>
+                A charming coastal cottage less than a mile from
+                the beach and about two miles from downtown Ogunquit,
+                with beautiful marsh views and easy access to nearby
+                restaurants and local attractions.
+              </p>
+
+              <div class="facts">
+                <span class="fact">Up to 7 Guests</span>
+                <span class="fact">3 Bedrooms</span>
+                <span class="fact">1 Bathroom</span>
+                <span class="fact">1 Dog Allowed</span>
+              </div>
+
+              <a
+                href="https://goproperties.directstays.com/property/walk-to-beach-firepit-simple-cottage-living"
+                class="btn btn-outline"
+                target="_blank"
+                rel="noopener"
+              >
+                View The Salt Box
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         EXPERIENCE
+    ================================== -->
+
+    <section class="experience">
+
+      <div class="container">
+
+        <div class="eyebrow" style="text-align:center;">
+          The Go Properties Experience
+        </div>
+
+        <h2>
+          More than just a place to stay.
+        </h2>
+
+        <p class="experience-intro">
+          Our homes are designed around the moments that make
+          a Maine getaway memorable.
+        </p>
+
+        <div class="experience-grid">
+
+          <div class="experience-card">
+            <span class="experience-number">01</span>
+            <h3>Room to Reconnect</h3>
+            <p>
+              Vacation homes created for families, friends and groups
+              to spend meaningful time together.
+            </p>
+          </div>
+
+          <div class="experience-card">
+            <span class="experience-number">02</span>
+            <h3>Southern Maine</h3>
+            <p>
+              Stay close to the beaches, restaurants and experiences
+              that make Wells and the surrounding coast special.
+            </p>
+          </div>
+
+          <div class="experience-card">
+            <span class="experience-number">03</span>
+            <h3>Comfort of Home</h3>
+            <p>
+              Welcoming spaces where you can settle in, slow down
+              and enjoy your getaway.
+            </p>
+          </div>
+
+          <div class="experience-card">
+            <span class="experience-number">04</span>
+            <h3>Book Direct</h3>
+            <p>
+              Check availability and reserve through our existing
+              DirectStays booking experience.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         ABOUT
+    ================================== -->
+
+    <section class="about" id="about">
+
+      <div class="container about-grid">
+
+        <div class="about-image">
+          <img
+            src="images/go-properties-about.jpg"
+            alt="Southern Maine vacation experience"
+          >
+        </div>
+
+        <div class="about-copy">
+
+          <div class="eyebrow">
+            Our Story
+          </div>
+
+          <h2>
+            Made for memorable Maine getaways.
+          </h2>
+
+          <p>
+            We're a small, family-owned business born and raised
+            in New England. Maine has been part of our family's
+            story for years through vacations, coastal adventures
+            and time spent together.
+          </p>
+
+          <p>
+            That connection inspired Go Properties. We wanted to
+            create welcoming places where other families, friends
+            and groups could experience the same warmth and charm
+            that keeps bringing us back to Southern Maine.
+          </p>
+
+          <p>
+            Today, we're excited to welcome guests to our homes in
+            Wells and help make their time on the Maine coast something
+            they'll remember long after they leave.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         EXPLORE WELLS
+    ================================== -->
+
+    <section class="wells" id="wells">
+
+      <div class="container wells-grid">
+
+        <div class="wells-copy">
+
+          <div class="eyebrow">
+            Explore Southern Maine
+          </div>
+
+          <h2>
+            Make Wells part of the memory.
+          </h2>
+
+          <p>
+            From relaxed beach days to local restaurants and
+            classic coastal towns, Southern Maine offers plenty
+            to explore beyond the front door.
+          </p>
+
+          <ul class="local-list">
+            <li>Beach days along the Southern Maine coast</li>
+            <li>Explore nearby Ogunquit</li>
+            <li>Local restaurants and seafood</li>
+            <li>Family-friendly activities</li>
+            <li>Scenic coastal drives</li>
+            <li>Seasonal Maine getaways</li>
+          </ul>
+
+          <a
+            href="#properties"
+            class="btn btn-primary"
+          >
+            Find Your Stay
+          </a>
+
+        </div>
+
+        <div class="wells-image">
+          <img
+            src="images/wells-maine.jpg"
+            alt="Southern Maine coast near Wells Maine"
+          >
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         DIRECT BOOKING
+    ================================== -->
+
+    <section class="direct-booking">
+
+      <div class="container booking-box">
+
+        <div class="eyebrow">
+          Book Direct
+        </div>
+
+        <h2>
+          Ready to plan your Maine getaway?
+        </h2>
+
+        <p>
+          Browse our properties and check current availability
+          through the Go Properties DirectStays booking site.
+        </p>
+
+        <a
+          href="https://goproperties.directstays.com"
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener"
+        >
+          Check Availability
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         FAQ
+    ================================== -->
+
+    <section class="faq" id="faq">
+
+      <div class="container faq-wrap">
+
+        <div class="eyebrow" style="text-align:center;">
+          Frequently Asked Questions
+        </div>
+
+        <h2>
+          Planning your stay
+        </h2>
+
+
+        <details>
+          <summary>
+            Where are the Go Properties vacation homes located?
+          </summary>
+
+          <p>
+            Shamrock by the Sea and The Salt Box are located in
+            Wells, Maine, giving guests access to Southern Maine's
+            beaches, restaurants and nearby coastal communities.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            How do I check availability?
+          </summary>
+
+          <p>
+            Use any Check Availability or Book Direct button on
+            this website. You'll be taken to our DirectStays booking
+            site where current availability can be viewed.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            Does this website process reservations?
+          </summary>
+
+          <p>
+            Reservations, availability and payments are handled
+            through our existing DirectStays booking system.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            Is The Salt Box pet friendly?
+          </summary>
+
+          <p>
+            The Salt Box currently allows one dog. Please review
+            the complete property rules before booking.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            What time is check-in and check-out at The Salt Box?
+          </summary>
+
+          <p>
+            The Salt Box currently lists check-in beginning at
+            4:00 PM and check-out before 11:00 AM.
+          </p>
+        </details>
+
+      </div>
+    </section>
+
+
+    <!-- ===============================
+         FINAL CTA
+    ================================== -->
+
+    <section class="final-cta">
+
+      <div class="container">
+
+        <div class="eyebrow" style="color:#dbe9eb;">
+          Go Properties
+        </div>
+
+        <h2>
+          Your next coastal memory starts in Maine.
+        </h2>
+
+        <p>
+          Discover Shamrock by the Sea and The Salt Box
+          and find the stay that's right for your next getaway.
+        </p>
+
+        <a
+          href="https://goproperties.directstays.com"
+          class="btn btn-light"
+          target="_blank"
+          rel="noopener"
+        >
+          Book Direct
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ===============================
+       FOOTER
+  ================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <h3>
+            Go Properties LLC
+          </h3>
+
+          <p>
+            Southern Maine vacation homes for families,
+            friends and groups.
+          </p>
+
+          <p style="margin-top:1rem;">
+            Spacious Stays. Coastal Memories.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h3>
+            Explore
+          </h3>
+
+          <ul class="footer-links">
+            <li><a href="#properties">Our Properties</a></li>
+            <li><a href="#about">About Go Properties</a></li>
+            <li><a href="#wells">Explore Wells</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h3>
+            Book Your Stay
+          </h3>
+
+          <ul class="footer-links">
+
+            <li>
+              <a
+                href="https://goproperties.directstays.com"
+                target="_blank"
+                rel="noopener"
+              >
+                Direct Booking
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                Instagram
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                Facebook
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                TikTok
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="year"></span> Go Properties LLC.
+          All rights reserved.
+        </span>
+
+        <span>
+          Wells, Maine
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    // Mobile navigation
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    // Close mobile menu when a link is clicked
+    document
+      .querySelectorAll("#navLinks a")
+      .forEach(link => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+        });
+      });
+
+    // Current year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
